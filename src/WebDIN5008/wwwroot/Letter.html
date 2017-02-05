@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        html {
+            width: 210mm;
+            height: 297mm;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+
+        .A4 {
+            background: white;
+            margin: 0 auto;
+        }
+
+        .debug-1 {
+            background-color: green;
+        }
+
+        .debug-2 {
+            background-color: red;
+        }
+
+        .debug-3 {
+            background-color: deepskyblue;
+        }
+
+        .page-break {
+            page-break-before: avoid;
+        }
+
+        .page-must-break {
+            page-break-before: always;
+        }
+
+        .flexbox {
+            display: -webkit-box; /* wkhtmltopdf uses this one */
+            display: flex;
+        }
+
+        .hole-mark {
+            position: absolute;
+            top: 148.5mm;
+        }
+
+        @media print {
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page-break {
+                display: block;
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="A4">
+        <div style="height:32mm;" class="flexbox">
+            <div style="width:125mm; height:27mm; " class="debug-1">
+                Feld für Briefkopf Form A
+            </div>
+            <div class="debug-2" style="width:auto">
+                test 2
+            </div>
+        </div>
+        <div style="height:68.46mm;" class="debug-3">
+            <div class="debug-1" style="float:left; margin-left: 20mm;height: 45mm;width: 85mm;">
+                test 1
+            </div>
+            <div class="debug-2" style="margin-left: auto; margin-right: 10mm; margin-top: 5mm; width:75mm;height:60mm">
+                test 2
+            </div>
+        </div>
+        <div style="margin-left:25mm;margin-right:20mm" class="debug-1">
+            <div style="min-height:105mm; ">
+                <blockquote>
+                    <p>Musterdorf, 24. Dezember 2013 </p>
+                </blockquote>
+
+                <h3 id="normbriefemitmarkdown">Normbriefe mit Markdown</h3>
+
+                <p>Sehr geehrter Herr Empfänger, </p>
+
+                <p>wussten Sie, dass Sie mit Markdown auch Briefe schreiben können? Dank dieses Stylesheets können Sie ihre Textverarbeitung einmotten. </p>
+
+                <p>Beim Einsatz von MultiMarkdown, werden auch Tabellen und Fußnoten<a href="#fn:1" id="fnref:1" title="see footnote" class="footnote">[1]</a> unterstützt. </p>
+            </div>
+            <div style="margin-top:4.23mm;margin-bottom:4.23mm; text-align:right;" class="debug-2">
+                Seite 1 von
+            </div>
+            <div style="margin-left:25mm;margin-right:20mm" class="debug-2">
+                footer
+            </div>
+        </div>
+    </div>
+    <svg height="0.5mm" width="5mm" class="hole-mark">
+        <line x1="0" y1="0" x2="5mm" y2="0" style="stroke:rgb(255,0,0);stroke-width:2" />
+    </svg>
+</body>
+</html>
